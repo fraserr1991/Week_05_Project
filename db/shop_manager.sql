@@ -13,6 +13,7 @@ CREATE TABLE inventory_items (
     description VARCHAR(255),
     stock_quantity INT,
     buying_cost INT,
-    selling_price INT
+    selling_price INT,
+    manufacturer_id INT NOT NULL REFERENCES manufacturers(id)
 );
 

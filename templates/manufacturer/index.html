@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 <hr>
-
-{% for manufacturer in all_manufacturers %}
-<h2>Manufacturer name: {{ manufacturer.name }}</h2>
-<h3>Established in: {{manufacturer.established }}</h3>
+<div class="manufacturer-container"></div>
+    {% for manufacturer in all_manufacturers %}
+    <div class="manufacturer">
+        <h2>Manufacturer name: {{ manufacturer.name }}</h2>
+        <h3>Established in: {{manufacturer.established }}</h3>
+        <form class="form-inline-2" action="/manufacturer/{{ manufacturer.id }}/delete/" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+</div>
 <hr>
 {% endfor %}
 {% endblock %}

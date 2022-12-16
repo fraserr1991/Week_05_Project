@@ -14,6 +14,6 @@ CREATE TABLE inventory_items (
     stock_quantity INT,
     buying_cost INT,
     selling_price INT,
-    manufacturer_id INT NOT NULL REFERENCES manufacturers(id)
+    manufacturer_id INT NOT NULL REFERENCES manufacturers(id) ON DELETE CASCADE
 );
 

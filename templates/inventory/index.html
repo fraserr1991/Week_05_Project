@@ -10,7 +10,6 @@
         <h4>Stock quantity: {{ item.stock_quantity }}</h4>
         <h4>buying cost: {{ item.buying_cost }}</h4>
         <h4>selling price: {{ item.selling_price }}</h4>
-        <h4>{{item.id}}</h4>
         
 
         <form class="form-inline" action="/inventory/{{ item.id }}/delete/" method="POST">

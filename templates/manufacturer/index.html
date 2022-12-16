@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<hr>
+
+{% for manufacturer in all_manufacturers %}
+<h2>Manufacturer name: {{ manufacturer.name }}</h2>
+<h3>Established in: {{manufacturer.established }}</h3>
+<hr>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<hr>
+<h2> Add manufacturer: </h2><br>
+<form action="/manufacturer/new_manufacturer" method="post">
+    <label for="name">Manufacturer name:</label>
+    <input type="text" id="name" name="name">
+    <label for=established>Established:</label>
+    <input type="number" id="established" name="established"> 
+    <input type="submit" id="submit" name="submit" value="submit">
+</form>
+
+{% endblock %}

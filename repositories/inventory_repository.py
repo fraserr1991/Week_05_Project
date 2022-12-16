@@ -25,6 +25,7 @@ def select_all():
         inventory_item = Inventory(row['name'], manufacturer, row['description'], row['stock_quantity'], row['buying_cost'], row['selling_price'])
         inventory_items.append(inventory_item)
     return inventory_items
+    
 
     # tasks = []
 

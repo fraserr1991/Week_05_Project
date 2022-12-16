@@ -1,22 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 <hr>
-<div class="item-container"></div>
+<div class="item-container">
     {% for item in inventory %}
     <div class="item">
-        <h2>Item name: {{ item.name }}</h2>
-        <h3>Manufacturer: {{item.manufacturer.name }}</h3>
-        <h4>Description: {{ item.description }}</h4>
-        <h4>Stock quantity: {{ item.stock_quantity }}</h4>
-        <h4>buying cost: {{ item.buying_cost }}</h4>
-        <h4>selling price: {{ item.selling_price }}</h4>
+        <h2>{{ item.name }} from {{item.manufacturer.name }}</h2>
+        <h4>{{ item.description }}</h4>
+        <table>
+            <tr>
+              <th>Quantity in stock</th>
+              <th>Buying cost</th>
+              <th>Selling price</th>
+            </tr>
+            <tr>
+              <td>{{ item.stock_quantity }}</td>
+              <td>{{ item.buying_cost }}</td>
+              <td>{{ item.selling_price }}</td>
+            </tr>
+          </table>
         
 
         <form class="form-inline" action="/inventory/{{ item.id }}/delete/" method="POST">
         <input type="submit" value="Delete">
     </form>
     </div>
-</div>
-<hr>
 {% endfor %}
+</div>
 {% endblock %}

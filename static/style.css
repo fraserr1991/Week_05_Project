@@ -1,0 +1,180 @@
+body {
+    background-color: rgb(249, 246, 242);
+}
+body > header {
+    background-color: rgb(248, 237, 224);
+}
+.menu {
+    background-color: rgb(248, 237, 224);
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    list-style: none;
+    padding-left: 75px;
+}
+
+.menu > li {
+    padding: 15px;
+}
+
+.menu > li > a {
+    color: black;
+    font-family: Georgia;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.item > h2 {
+    text-align: center;
+}
+
+.item > h4 {
+    text-align: center;
+}
+
+.item-container {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 33%;
+    padding: 20px;
+}
+
+.item {
+    border-style: double;
+    border-color: black;
+    background-color:rgb(248, 237, 224);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    min-height: 200px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-spacing: 10px
+}
+
+table > tr > th {
+    padding-left: 100px;
+
+}
+
+.form-inline {
+    padding: 5px;
+}
+
+/* <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Coffee equipment</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/inventory">Inventory list</a></li>
+        <li><a href="/inventory/new_item">Add inventory item</a></li>
+        <li><a href="/manufacturer">Manufacturer list</a></li>
+        <li><a href="/manufacturer/new_manufacturer">Add manufactuer</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+</html> */
+/* 
+body{
+    font-family: "Helvetica", arial, sans-serif; font-size: 16px;
+  }
+  
+  .task {
+    border: 1px solid #ccc;
+    width: 300px;
+    min-height: 68px;
+    padding: 10px;
+    display: flex;
+    line-height: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .name {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    margin-right: 0.3em;
+  }
+  
+  .duration{
+    color: #8899a6;
+    font-size: 13px;
+    margin-left: 20px;
+  }
+  
+  .buttons {
+    margin-top: 10px;
+    margin-left: 2px;
+    font-size: 1.4em;
+    color: #aab8c2;
+  }
+  
+  .buttons i {
+    width: 80px;
+  }
+  
+  input, select, button {
+    font-size: 100%;
+    width : 100%;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+  }
+  
+  .trash-button{
+    display: contents;
+    font-size: 65%;
+  }
+  
+  
+  .delete-form{
+    display: inline;
+  }
+  
+  .menu{
+    display: flex;
+    padding: 10px;
+    background-color: grey;
+    color: white;
+  }
+  
+  .menu li a{
+    text-decoration: none;
+  }
+  
+  .menu li a:visited{
+    color: white;
+  }
+  
+  .menu li{
+    padding-right: 10px;
+    list-style: none;
+    color: white;
+    font-family: "Helvetica", arial, sans-serif; font-size: 14px;
+  }
+  
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    margin: 0 auto;
+  }
+   */

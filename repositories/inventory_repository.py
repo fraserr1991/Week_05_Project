@@ -14,15 +14,26 @@ def save(inventory_item):
     inventory_item.id = id
     return inventory_item
 
-# def select_all():
-#     inventory_items = []
+def select_all():
+    inventory_items = []
 
-#     sql = "SELECT * FROM inventory_items"
-#     results = run_sql(sql)
+    sql = "SELECT * FROM inventory_items"
+    results = run_sql(sql)
 
-#     for row in results:
-#         manufacturer = manufacturer_repository.select(row['manufacturer_id'])
-#         inventory_item = Inventory(row['name'], row['description'], row['stock_quantity'], row['buying_cost'], row['selling_price'], manufacturer_id)
-#         inventory_items.append(inventory_item)
-#     return inventory_items
+    for row in results:
+        manufacturer = manufacturer_repository.select(row['manufacturer_id'])
+        inventory_item = Inventory(row['name'], manufacturer, row['description'], row['stock_quantity'], row['buying_cost'], row['selling_price'])
+        inventory_items.append(inventory_item)
+    return inventory_items
+
+    # tasks = []
+
+    # sql = "SELECT * FROM tasks"
+    # results = run_sql(sql)
+
+    # for row in results:
+    #     user = user_repository.select(row['user_id'])
+    #     task = Task(row['description'], user, row['duration'], row['completed'], row['id'] )
+    #     tasks.append(task)
+    # return tasks
 

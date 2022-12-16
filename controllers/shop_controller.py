@@ -48,6 +48,11 @@ def add_manufacturer():
     manufacturer_repository.save(manufacturer)
     return render_template("manufacturer/new_manufacturer.html")
 
+@shop_blueprint.route('/inventory/<index>/delete/', methods=['POST'])
+def delete(index):
+    inventory_repository.delete(index)
+    return redirect('/inventory')
+
 
 # @tasks_blueprint.route("/tasks",  methods=['POST'])
 # def create_task():

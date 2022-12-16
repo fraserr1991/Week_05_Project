@@ -22,10 +22,26 @@ def select_all():
 
     for row in results:
         manufacturer = manufacturer_repository.select(row['manufacturer_id'])
-        inventory_item = Inventory(row['name'], manufacturer, row['description'], row['stock_quantity'], row['buying_cost'], row['selling_price'])
+        inventory_item = Inventory(row['name'], manufacturer, row['description'], row['stock_quantity'], row['buying_cost'], row['selling_price'], row['id'])
         inventory_items.append(inventory_item)
     return inventory_items
-    
+
+# def select(id):
+#     item = None
+#     sql = "SELECT * FROM inventory_items WHERE id = %s"
+#     values = [id]
+#     results = run_sql(sql, values)
+
+#     if results:
+#         result = results[0]
+#         manufacturer = manufacturer_repository.select(result['manufacturer_id'])
+#         item = Inventory(result['name'], manufacturer, result['description'], result['stock_quantity'], result['buying_cost'], result['selling_price'], result['id'] )
+#     return item
+
+def delete(id):
+    sql = "DELETE FROM inventory_items WHERE id = %s"
+    values = id
+    run_sql(sql, values)
 
     # tasks = []
 

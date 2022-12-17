@@ -18,6 +18,11 @@
             </tr>
           </table>
         
+          {% if item.stock_quantity is eq(0) %}
+          <p><i>out of stock</i></p>
+          {% elif item.stock_quantity is le(3) %}
+          <p><i>stock low</i></p>
+          {% endif %}
 
         <a href="{{ item.id }}/edit_item">Edit item</a>
     </div>

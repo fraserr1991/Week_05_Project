@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<hr>
+<h2> Edit item: </h2><br>
+  <form class="form-inline-2" action="/manufacturer/{{ manufacturer.id }}" method="post">
+      <label for="name">Manufacturer name:</label>
+      <input type="text" id="namre" name="name" value="{{ manufacturer.name }}">
+      <br><label for=established>Established:</label>
+      <input type="text" id="established" name="established" value="{{ manufacturer.established }}">
+        <br><input type="submit" id="submit" name="submit" value="submit">
+      </div>
+  </form>
+
+{% endblock %}

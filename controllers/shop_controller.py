@@ -83,6 +83,19 @@ def individual_manufacturer_info(index):
     selected_manufacturer = manufacturer_repository.select(index)
     return render_template('manufacturer/show.html/', manufacturer = selected_manufacturer)
 
+@shop_blueprint.route("/manufacturer/<index>/edit_manufacturer/", methods=['GET'])
+def get_edit_manufacturer(index):
+    manufacturer = manufacturer_repository.select(index)
+    return render_template("manufacturer/edit_manufacturer.html", manufacturer = manufacturer)
+
+@shop_blueprint.route("/manufacturer/<id>", methods=['POST'])
+def update_manufacturer(id):
+    name = request.form['name']
+    established = request.form['established']
+    manufacturer = Manufacturer(name, established, id)
+    manufacturer_repository.update(manufacturer)
+    return redirect('/manufacturer')
+
 @shop_blueprint.route('/inventory/<index>/delete/', methods=['POST'])
 def delete_item(index):
     inventory_repository.delete(index)

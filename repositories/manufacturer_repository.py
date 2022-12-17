@@ -33,6 +33,11 @@ def select_all():
         manufacturer = Manufacturer(row['name'], row['established'], row['id'])
         manufacturers.append(manufacturer)
     return manufacturers
+
+def update(manufacturer):
+    sql = "UPDATE manufacturers SET (name, established) = (%s,%s) WHERE id = %s"
+    values = [manufacturer.name, manufacturer.established, manufacturer.id]
+    run_sql(sql, values)
     
 def delete(id):
     sql = "DELETE FROM manufacturers WHERE id = %s"

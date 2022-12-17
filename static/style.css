@@ -103,7 +103,7 @@ table > tr > th {
 }
 
 .form-inline-2 > input {
-    word-spacing: 30px;
+    text-align: top;
 
 }
 

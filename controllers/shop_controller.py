@@ -48,10 +48,35 @@ def add_manufacturer():
     manufacturer_repository.save(manufacturer)
     return render_template("manufacturer/new_manufacturer.html")
 
+@shop_blueprint.route("/inventory/<index>/edit_item/", methods=['GET'])
+def get_edit_item(index):
+    item = inventory_repository.select(index) 
+    all_manufacturers = manufacturer_repository.select_all()
+    return render_template("inventory/edit_item.html", item = item, all_manufacturers = all_manufacturers)
+
+# @tasks_blueprint.route("/tasks/<id>/edit", methods=['GET'])
+# def edit_task(id):
+#     task = task_repository.select(id)
+#     users = user_repository.select_all()
+#     return render_template('tasks/edit.html', task = task, all_users = users)
+
 @shop_blueprint.route('/inventory/<index>', methods=['GET'])
 def individual_item_info(index):
     selected_item = inventory_repository.select(index)
     return render_template('inventory/show.html/', item = selected_item)
+
+@shop_blueprint.route("/inventory/<id>", methods=['POST'])
+def update_inventory(id):
+    item_name = request.form['item_name']
+    manufacturer_id = request.form['manufacturer_id']
+    description = request.form['description']
+    quantity = request.form['quantity']
+    buying_cost = request.form['buying_cost']
+    selling_price = request.form['selling_price']
+    manufacturer = manufacturer_repository.select(manufacturer_id)
+    item = Inventory(item_name, manufacturer, description, quantity, buying_cost, selling_price, id)
+    inventory_repository.update(item)
+    return redirect('/inventory')
 
 
 @shop_blueprint.route('/inventory/<index>/delete/', methods=['POST'])
@@ -63,7 +88,6 @@ def delete_item(index):
 def delete_manufacturer(index):
     manufacturer_repository.delete(index)
     return redirect('/manufacturer')
-
 
 # @tasks_blueprint.route("/tasks",  methods=['POST'])
 # def create_task():

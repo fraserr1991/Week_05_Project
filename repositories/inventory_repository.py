@@ -22,7 +22,7 @@ def select_all():
 
     for row in results:
         manufacturer = manufacturer_repository.select(row['manufacturer_id'])
-        inventory_item = Inventory(row['name'], manufacturer, row['description'], row['stock_quantity'], row['buying_cost'], row['selling_price'], row['id'])
+        inventory_item = Inventory(row['name'], manufacturer, row['description'], int(row['stock_quantity']), int(row['buying_cost']), int(row['selling_price']), row['id'])
         inventory_items.append(inventory_item)
     return inventory_items
 
@@ -35,8 +35,13 @@ def select(id):
     if results:
         result = results[0]
         manufacturer = manufacturer_repository.select(result['manufacturer_id'])
-        item = Inventory(result['name'], manufacturer, result['description'], result['stock_quantity'], result['buying_cost'], result['selling_price'], result['id'] )
+        item = Inventory(result['name'], manufacturer, result['description'], int(result['stock_quantity']), int(result['buying_cost']), int(result['selling_price']), result['id'] )
     return item
+
+def update(inventory_item):
+    sql = "UPDATE inventory_items SET (name, manufacturer_id, description, stock_quantity, buying_cost, selling_price) = (%s,%s,%s,%s,%s,%s) WHERE id = %s"
+    values = [inventory_item.name, inventory_item.manufacturer.id, inventory_item.description, inventory_item.stock_quantity, inventory_item.buying_cost, inventory_item.selling_price, inventory_item.id]
+    run_sql(sql, values)
 
 def delete(id):
     sql = "DELETE FROM inventory_items WHERE id = %s"

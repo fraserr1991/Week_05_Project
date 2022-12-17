@@ -78,6 +78,10 @@ def update_inventory(id):
     inventory_repository.update(item)
     return redirect('/inventory')
 
+@shop_blueprint.route('/manufacturer/<index>', methods=['GET'])
+def individual_manufacturer_info(index):
+    selected_manufacturer = manufacturer_repository.select(index)
+    return render_template('manufacturer/show.html/', manufacturer = selected_manufacturer)
 
 @shop_blueprint.route('/inventory/<index>/delete/', methods=['POST'])
 def delete_item(index):

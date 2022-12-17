@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<hr>
+<div class="item-container">
+    <div class="item">
+        <h2>{{ manufacturer.name }}</h2>
+        <h4>Established in: {{manufacturer.established }}</h4>
+
+        <a href="{{ manufacturer.id }}/edit_manufacturer">Edit manufacturer</a>
+    </div>
+</div>
+{% endblock %}

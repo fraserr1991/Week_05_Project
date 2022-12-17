@@ -48,6 +48,12 @@ def add_manufacturer():
     manufacturer_repository.save(manufacturer)
     return render_template("manufacturer/new_manufacturer.html")
 
+@shop_blueprint.route('/inventory/<index>', methods=['GET'])
+def individual_item_info(index):
+    selected_item = inventory_repository.select(index)
+    return render_template('inventory/show.html/', item = selected_item)
+
+
 @shop_blueprint.route('/inventory/<index>/delete/', methods=['POST'])
 def delete_item(index):
     inventory_repository.delete(index)

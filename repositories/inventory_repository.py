@@ -26,17 +26,17 @@ def select_all():
         inventory_items.append(inventory_item)
     return inventory_items
 
-# def select(id):
-#     item = None
-#     sql = "SELECT * FROM inventory_items WHERE id = %s"
-#     values = [id]
-#     results = run_sql(sql, values)
+def select(id):
+    item = None
+    sql = "SELECT * FROM inventory_items WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
 
-#     if results:
-#         result = results[0]
-#         manufacturer = manufacturer_repository.select(result['manufacturer_id'])
-#         item = Inventory(result['name'], manufacturer, result['description'], result['stock_quantity'], result['buying_cost'], result['selling_price'], result['id'] )
-#     return item
+    if results:
+        result = results[0]
+        manufacturer = manufacturer_repository.select(result['manufacturer_id'])
+        item = Inventory(result['name'], manufacturer, result['description'], result['stock_quantity'], result['buying_cost'], result['selling_price'], result['id'] )
+    return item
 
 def delete(id):
     sql = "DELETE FROM inventory_items WHERE id = %s"

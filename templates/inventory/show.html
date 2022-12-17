@@ -2,9 +2,8 @@
 {% block content %}
 <hr>
 <div class="item-container">
-    {% for item in inventory %}
     <div class="item">
-        <h2>{{ item.name }} from {{item.manufacturer.name }}</h2>
+        <h2>{{ item.name }} from {{item.manufacturer_id }}</h2>
         <h4>{{ item.description }}</h4>
         <table>
             <tr>
@@ -20,11 +19,9 @@
           </table>
         
 
-        <form class="form-inline" action="/inventory/{{ item.id }}/delete/" method="POST">
-        <input type="submit" value="Delete" id="delete">
-        <a href="inventory/{{ item.id }}">More information</a>
+        <form class="form-inline" action="/inventory/{{ item.id }}/edit/" method="POST">
+        <input type="submit" value="edit" id="edit">
     </form>
     </div>
-{% endfor %}
 </div>
 {% endblock %}

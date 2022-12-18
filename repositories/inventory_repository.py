@@ -22,8 +22,8 @@ def select_all():
 
     for row in results:
         manufacturer = manufacturer_repository.select(row['manufacturer_id'])
-        margin = inventory_repository.calculate_margin(row['buying_cost'], row['selling_price'])
-        inventory_item = Inventory(row['name'], manufacturer, row['description'], int(row['stock_quantity']), int(row['buying_cost']), int(row['selling_price']), margin, row['id'])
+        markup = inventory_repository.calculate_markup(row['buying_cost'], row['selling_price'])
+        inventory_item = Inventory(row['name'], manufacturer, row['description'], int(row['stock_quantity']), int(row['buying_cost']), int(row['selling_price']), markup, row['id'])
         inventory_items.append(inventory_item)
     return inventory_items
 
@@ -36,8 +36,8 @@ def select(id):
     if results:
         result = results[0]
         manufacturer = manufacturer_repository.select(result['manufacturer_id'])
-        margin = inventory_repository.calculate_margin(result['buying_cost'], result['selling_price'])
-        item = Inventory(result['name'], manufacturer, result['description'], int(result['stock_quantity']), int(result['buying_cost']), int(result['selling_price']), margin, result['id'] )
+        markup = inventory_repository.calculate_markup(result['buying_cost'], result['selling_price'])
+        item = Inventory(result['name'], manufacturer.name, result['description'], int(result['stock_quantity']), int(result['buying_cost']), int(result['selling_price']), markup, result['id'] )
     return item
 
 def update(inventory_item):
@@ -50,9 +50,9 @@ def delete(id):
     values = id
     run_sql(sql, values)
 
-def calculate_margin(buying_cost, selling_price):
-    margin = ("{0:.0%}".format((selling_price-buying_cost)/buying_cost))
-    return(margin)
+def calculate_markup(buying_cost, selling_price):
+    markup = ("{0:.0%}".format((selling_price-buying_cost)/buying_cost))
+    return(markup)
 
     # tasks = []
 

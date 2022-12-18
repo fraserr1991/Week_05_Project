@@ -3,6 +3,7 @@
 <hr>
 <div class="item-container">
     <div class="item">
+      {{item.__dict__}}
         <h2>{{ item.name }} from {{item.manufacturer_id }}</h2>
         <h4>{{ item.description }}</h4>
         <table>
@@ -10,7 +11,7 @@
               <th>Quantity in stock</th>
               <th>Buying cost</th>
               <th>Selling price</th>
-              <th>Margin</th>
+              <th>Markup</th>
             </tr>
             <tr>
               <td>{{ item.stock_quantity }}</td>

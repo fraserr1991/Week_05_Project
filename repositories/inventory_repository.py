@@ -7,8 +7,8 @@ from models.inventory import Inventory
 from models.manufacturer import Manufacturer
 
 def save(inventory_item):
-    sql = "INSERT INTO inventory_items (name, manufacturer_id, description, stock_quantity, buying_cost, selling_price) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
-    values = [inventory_item.name, inventory_item.manufacturer.id, inventory_item.description, inventory_item.stock_quantity, inventory_item.buying_cost, inventory_item.selling_price]
+    sql = "INSERT INTO inventory_items (name, manufacturer_id, description, stock_quantity, buying_cost, selling_price, image) VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING *"
+    values = [inventory_item.name, inventory_item.manufacturer.id, inventory_item.description, inventory_item.stock_quantity, inventory_item.buying_cost, inventory_item.selling_price, inventory_item.image]
     results = run_sql(sql, values)
     id = results[0]['id']
     inventory_item.id = id
@@ -23,7 +23,7 @@ def select_all():
     for row in results:
         manufacturer = manufacturer_repository.select(row['manufacturer_id'])
         markup = inventory_repository.calculate_markup(row['buying_cost'], row['selling_price'])
-        inventory_item = Inventory(row['name'], manufacturer, row['description'], int(row['stock_quantity']), int(row['buying_cost']), int(row['selling_price']), markup, row['id'])
+        inventory_item = Inventory(row['name'], manufacturer, row['description'], int(row['stock_quantity']), int(row['buying_cost']), int(row['selling_price']), markup, row['image'], row['id'])
         inventory_items.append(inventory_item)
     return inventory_items
 
@@ -37,12 +37,12 @@ def select(id):
         result = results[0]
         manufacturer = manufacturer_repository.select(result['manufacturer_id'])
         markup = inventory_repository.calculate_markup(result['buying_cost'], result['selling_price'])
-        item = Inventory(result['name'], manufacturer.name, result['description'], int(result['stock_quantity']), int(result['buying_cost']), int(result['selling_price']), markup, result['id'] )
+        item = Inventory(result['name'], manufacturer.name, result['description'], int(result['stock_quantity']), int(result['buying_cost']), int(result['selling_price']), markup, result['image'], result['id'] )
     return item
 
 def update(inventory_item):
-    sql = "UPDATE inventory_items SET (name, manufacturer_id, description, stock_quantity, buying_cost, selling_price) = (%s,%s,%s,%s,%s,%s) WHERE id = %s"
-    values = [inventory_item.name, inventory_item.manufacturer.id, inventory_item.description, inventory_item.stock_quantity, inventory_item.buying_cost, inventory_item.selling_price, inventory_item.id]
+    sql = "UPDATE inventory_items SET (name, manufacturer_id, description, stock_quantity, buying_cost, selling_price, image) = (%s,%s,%s,%s,%s,%s, %s) WHERE id = %s"
+    values = [inventory_item.name, inventory_item.manufacturer.id, inventory_item.description, inventory_item.stock_quantity, inventory_item.buying_cost, inventory_item.selling_price, inventory_item.image, inventory_item.id]
     run_sql(sql, values)
 
 def delete(id):

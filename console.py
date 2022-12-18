@@ -17,7 +17,7 @@ manufacturer_5 = Manufacturer("Motta", 1962)
 manufacturer_repository.save(manufacturer_5)
 
 
-inventory_item_1 = Inventory("Coffee Tamper", manufacturer_5, "Real wood 58.4mm competition coffee tamper", 20, 25, 35)
+inventory_item_1 = Inventory("Coffee Tamper", manufacturer_5, "Real wood 58.4mm competition coffee tamper", 20, 25, 35, "https://m.media-amazon.com/images/I/61C-kJ7b3ML._AC_SS450_.jpg")
 inventory_repository.save(inventory_item_1)
 inventory_item_2 = Inventory("The Oracle", manufacturer_1, "Bean to cup coffee machine with automatic milk frother", 5, 1000, 1500)
 inventory_repository.save(inventory_item_2)

@@ -112,7 +112,10 @@ table > tr > th {
     border-radius: 5px;
 }
 
-
+img {
+    width: 200px;
+    height: 200px;
+}
 /* <!DOCTYPE html>
 <html lang="en">
 <head>

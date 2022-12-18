@@ -26,8 +26,9 @@ def add_item():
     quantity = request.form['quantity']
     buying_cost = request.form['buying_cost']
     selling_price = request.form['selling_price']
+    image = request.form['image']
     manufacturer = manufacturer_repository.select(manufacturer_id)
-    item = Inventory(item_name, manufacturer, description, quantity, buying_cost, selling_price)
+    item = Inventory(item_name, manufacturer, description, quantity, buying_cost, selling_price, image)
     inventory_repository.save(item)
     return render_template("inventory/new_item.html")
 

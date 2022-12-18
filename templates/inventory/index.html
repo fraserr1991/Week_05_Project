@@ -4,15 +4,12 @@
 <p><b>Filter by manufacturer:</b>
 {% for manufacturer in manufacturers %}
 <label class="container" value="{{ manufacturer.id }}">{{ manufacturer.name }}
-  <input type="checkbox" checked="checked">
+  <input type="checkbox" checked="checked" value="{{manufacturer.id}}">
   <span class="checkmark"></span>
-</label>
-{% endfor %}
-</p>
-
-
-<div class="item-container">
+    </label>
+  <div class="item-container">
     {% for item in inventory %}
+    {% if item.manufacturer_id == manufacturer.id %}
     <div class="item">
         <h2>{{ item.name }} from {{item.manufacturer.name }}</h2>
         <h4>{{ item.description }}</h4>
@@ -42,6 +39,9 @@
         <a href="inventory/{{ item.id }}">More information</a>
     </form>
     </div>
+  {% endif %}
+{% endfor %}
+</p>
 {% endfor %}
 
 </div>

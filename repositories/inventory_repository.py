@@ -22,7 +22,8 @@ def select_all():
 
     for row in results:
         manufacturer = manufacturer_repository.select(row['manufacturer_id'])
-        inventory_item = Inventory(row['name'], manufacturer, row['description'], int(row['stock_quantity']), int(row['buying_cost']), int(row['selling_price']), row['id'])
+        margin = inventory_repository.calculate_margin(row['buying_cost'], row['selling_price'])
+        inventory_item = Inventory(row['name'], manufacturer, row['description'], int(row['stock_quantity']), int(row['buying_cost']), int(row['selling_price']), margin, row['id'])
         inventory_items.append(inventory_item)
     return inventory_items
 
@@ -48,12 +49,9 @@ def delete(id):
     values = id
     run_sql(sql, values)
 
-def calculate_margin(show_inventory):
-    results = []
-    for row in show_inventory:
-        result = ("{0:.0%}".format(1-(row.buying_cost/row.selling_price)))
-        results.append(result)
-    return(results)
+def calculate_margin(buying_cost, selling_price):
+    margin = ("{0:.0%}".format(1-(buying_cost/selling_price)))
+    return(margin)
 
     # tasks = []
 

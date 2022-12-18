@@ -10,7 +10,8 @@ shop_blueprint = Blueprint("coffee equipment shop", __name__)
 @shop_blueprint.route("/inventory")
 def show_inventory():
     show_inventory = inventory_repository.select_all()
-    return render_template("inventory/index.html", inventory = show_inventory)
+    show_manufacturers = manufacturer_repository.select_all()
+    return render_template("inventory/index.html", inventory = show_inventory, manufacturers = show_manufacturers)
 
 @shop_blueprint.route("/inventory/new_item", methods=['GET'])
 def new_item():

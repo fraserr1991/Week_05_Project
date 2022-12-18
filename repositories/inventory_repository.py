@@ -54,6 +54,19 @@ def calculate_markup(buying_cost, selling_price):
     markup = ("{0:.0%}".format((selling_price-buying_cost)/buying_cost))
     return(markup)
 
+# def show_by_manufacturer(manufacturer_id)
+#     item = None
+#     sql = "SELECT * FROM inventory_items WHERE manufacturer_id = %s"
+#     values = [manufacturer_id]
+#     results = run_sql(sql, values)
+
+#     if results:
+#         result = results[0]
+#         manufacturer = manufacturer_repository.select(result['manufacturer_id'])
+#         markup = inventory_repository.calculate_markup(result['buying_cost'], result['selling_price'])
+#         item = Inventory(result['name'], manufacturer.name, result['description'], int(result['stock_quantity']), int(result['buying_cost']), int(result['selling_price']), markup, result['id'] )
+#     return item
+
     # tasks = []
 
     # sql = "SELECT * FROM tasks"

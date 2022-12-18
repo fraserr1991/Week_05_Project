@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 <hr>
+<p><b>Filter by manufacturer:</b>
+{% for manufacturer in manufacturers %}
+<label class="container" value="{{ manufacturer.id }}">{{ manufacturer.name }}
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+</label>
+{% endfor %}
+</p>
+
+
 <div class="item-container">
     {% for item in inventory %}
     <div class="item">
@@ -33,5 +43,6 @@
     </form>
     </div>
 {% endfor %}
+
 </div>
 {% endblock %}

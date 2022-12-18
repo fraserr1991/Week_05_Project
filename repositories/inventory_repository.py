@@ -48,6 +48,13 @@ def delete(id):
     values = id
     run_sql(sql, values)
 
+def calculate_margin(show_inventory):
+    results = []
+    for row in show_inventory:
+        result = ("{0:.0%}".format(1-(row.buying_cost/row.selling_price)))
+        results.append(result)
+    return(results)
+
     # tasks = []
 
     # sql = "SELECT * FROM tasks"

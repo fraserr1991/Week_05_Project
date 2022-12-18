@@ -36,7 +36,8 @@ def select(id):
     if results:
         result = results[0]
         manufacturer = manufacturer_repository.select(result['manufacturer_id'])
-        item = Inventory(result['name'], manufacturer, result['description'], int(result['stock_quantity']), int(result['buying_cost']), int(result['selling_price']), result['id'] )
+        margin = inventory_repository.calculate_margin(result['buying_cost'], result['selling_price'])
+        item = Inventory(result['name'], manufacturer, result['description'], int(result['stock_quantity']), int(result['buying_cost']), int(result['selling_price']), margin, result['id'] )
     return item
 
 def update(inventory_item):
@@ -50,7 +51,7 @@ def delete(id):
     run_sql(sql, values)
 
 def calculate_margin(buying_cost, selling_price):
-    margin = ("{0:.0%}".format(1-(buying_cost/selling_price)))
+    margin = ("{0:.0%}".format((selling_price-buying_cost)/buying_cost))
     return(margin)
 
     # tasks = []

@@ -15,7 +15,7 @@ def show_inventory():
 
 @shop_blueprint.route("/inventory/new_item", methods=['GET'])
 def new_item():
-    all_manufacturers = manufacturer_repository.select_all() 
+    all_manufacturers = manufacturer_repository.select_all()
     return render_template("inventory/new_item.html", all_manufacturers = all_manufacturers)
 
 @shop_blueprint.route("/inventory/new_item", methods=['POST'])
@@ -76,9 +76,10 @@ def update_inventory(id):
     quantity = request.form['quantity']
     buying_cost = request.form['buying_cost']
     selling_price = request.form['selling_price']
+    image = request.form['image']
     manufacturer = manufacturer_repository.select(manufacturer_id)
     margin = inventory_repository.calculate_markup(int(buying_cost), int(selling_price))
-    item = Inventory(item_name, manufacturer, description, quantity, buying_cost, selling_price, margin, id)
+    item = Inventory(item_name, manufacturer, description, quantity, buying_cost, selling_price, image, margin, id)
     inventory_repository.update(item)
     return redirect('/inventory')
 

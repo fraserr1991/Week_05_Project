@@ -12,7 +12,6 @@
 
 <div class="item-container">
     {% for item in inventory %}
-    <!-- {{item.__dict__}} -->
     <div class="item">
         <img src="{{ item.image }}" alt="default">
         <h2>{{ item.name }} from {{item.manufacturer.name }}</h2>

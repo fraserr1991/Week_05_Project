@@ -23,7 +23,7 @@ def select_all():
     for row in results:
         manufacturer = manufacturer_repository.select(row['manufacturer_id'])
         markup = inventory_repository.calculate_markup(row['buying_cost'], row['selling_price'])
-        inventory_item = Inventory(row['name'], manufacturer, row['description'], int(row['stock_quantity']), int(row['buying_cost']), int(row['selling_price']), markup, row['image'], row['id'])
+        inventory_item = Inventory(row['name'], manufacturer, row['description'], int(row['stock_quantity']), int(row['buying_cost']), int(row['selling_price']), row['image'], markup, row['id'])
         inventory_items.append(inventory_item)
     return inventory_items
 
@@ -37,7 +37,7 @@ def select(id):
         result = results[0]
         manufacturer = manufacturer_repository.select(result['manufacturer_id'])
         markup = inventory_repository.calculate_markup(result['buying_cost'], result['selling_price'])
-        item = Inventory(result['name'], manufacturer.name, result['description'], int(result['stock_quantity']), int(result['buying_cost']), int(result['selling_price']), markup, result['image'], result['id'] )
+        item = Inventory(result['name'], manufacturer.name, result['description'], int(result['stock_quantity']), int(result['buying_cost']), int(result['selling_price']), result['image'], markup, result['id'] )
     return item
 
 def update(inventory_item):

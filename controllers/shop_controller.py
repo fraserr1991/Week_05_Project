@@ -13,7 +13,8 @@ def show_homepage_dashboard():
     total_inventory_items = inventory_repository.calculate_total_inventory_items(show_inventory)
     total_book_cost = inventory_repository.calculate_book_cost(show_inventory)
     total_spent_on_inventory = inventory_repository.caclaulate_total_spent(show_inventory)
-    return render_template("/index.html", show_inventory = show_inventory, total_inventory_items = total_inventory_items, total_spent_on_inventory = total_spent_on_inventory, total_book_cost = total_book_cost)
+    shop_markup = inventory_repository.calculate_inventory_markup(total_book_cost, total_spent_on_inventory)
+    return render_template("/index.html", show_inventory = show_inventory, total_inventory_items = total_inventory_items, total_spent_on_inventory = total_spent_on_inventory, total_book_cost = total_book_cost, shop_markup = shop_markup)
 
 @shop_blueprint.route("/inventory")
 def show_inventory():
@@ -90,8 +91,11 @@ def update_inventory(id):
     buying_cost = request.form['buying_cost']
     selling_price = request.form['selling_price']
     image = request.form['image']
+    if image == "" or " ":
+        image =  "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg"
+ 
     manufacturer = manufacturer_repository.select(manufacturer_id)
-    margin = inventory_repository.calculate_markup(int(buying_cost), int(selling_price))
+    margin = inventory_repository.calculate_markup(float(buying_cost), float(selling_price))
     item = Inventory(item_name, manufacturer, description, quantity, buying_cost, selling_price, image, margin, id)
     inventory_repository.update(item)
     return redirect('/inventory')

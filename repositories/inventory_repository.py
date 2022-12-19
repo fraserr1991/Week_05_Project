@@ -23,7 +23,7 @@ def select_all():
     for row in results:
         manufacturer = manufacturer_repository.select(row['manufacturer_id'])
         markup = inventory_repository.calculate_markup(row['buying_cost'], row['selling_price'])
-        inventory_item = Inventory(row['name'], manufacturer, row['description'], int(row['stock_quantity']), int(row['buying_cost']), int(row['selling_price']), row['image'], markup, row['id'])
+        inventory_item = Inventory(row['name'], manufacturer, row['description'], row['stock_quantity'], float(row['buying_cost']), float(row['selling_price']), row['image'], markup, row['id'])
         inventory_items.append(inventory_item)
     return inventory_items
 
@@ -37,7 +37,7 @@ def select(id):
         result = results[0]
         manufacturer = manufacturer_repository.select(result['manufacturer_id'])
         markup = inventory_repository.calculate_markup(result['buying_cost'], result['selling_price'])
-        item = Inventory(result['name'], manufacturer.name, result['description'], int(result['stock_quantity']), int(result['buying_cost']), int(result['selling_price']), result['image'], markup, result['id'] )
+        item = Inventory(result['name'], manufacturer.name, result['description'], result['stock_quantity'], float(result['buying_cost']), float(result['selling_price']), result['image'], markup, result['id'] )
     return item
 
 def update(inventory_item):
@@ -52,7 +52,7 @@ def delete(id):
 
 def calculate_markup(buying_cost, selling_price):
     markup = ("{0:.0%}".format((selling_price-buying_cost)/buying_cost))
-    return(markup)
+    return markup
 
 def calculate_total_inventory_items(inventory):
     total_items = 0
@@ -75,6 +75,10 @@ def caclaulate_total_spent(inventory):
         spent_on_item += item.buying_cost * item.stock_quantity
         total_spent_on_all_inventory += spent_on_item
     return total_spent_on_all_inventory
+
+def calculate_inventory_markup(total_book_cost_of_all_inventory, total_spent_on_all_inventory):
+    shop_markup = ("{0:.0%}".format((total_book_cost_of_all_inventory-total_spent_on_all_inventory)/total_spent_on_all_inventory))
+    return shop_markup
 
 # def show_by_manufacturer(manufacturer_id)
 #     item = None

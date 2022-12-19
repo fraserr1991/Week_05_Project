@@ -7,13 +7,24 @@
       <th>Total spent on buying inventory</th>
       <th>Total shop inventory book price</th>
       <th><b>Profit potential of inventory</b></th>
+      <th><b>Average inventory markup</b></th>
     </tr>
     <tr>
       <td>{{ '{:20,.0f}'.format(total_inventory_items) }}</td>
       <td> £{{ '{:20,.2f}'.format(total_spent_on_inventory) }}</td>
       <td>£{{ '{:20,.2f}'.format(total_book_cost) }}</td>
       <td><b>£{{ '{:20,.2f}'.format(total_book_cost - total_spent_on_inventory) }}</b></td>
+      <td><b>{{ shop_markup }}</b></td>
     </tr>
   </table>
+
+  <h1> Urgent attention: </h1>
+{% for item in show_inventory %}
+      {% if item.stock_quantity is eq(0) %}
+        <a href=inventory/{{item.id}} class="homepage_attention_item"><p><b>{{ item.name }} is out of stock</b></p></a>
+      {% elif item.stock_quantity is le(3) %}
+      <a href=inventory/{{item.id}} class="homepage_attention_item"><p><i>{{ item.name }} stock is low</i></p></a>
+      {% endif %}
+{% endfor %}
 
 {% endblock %}

@@ -15,9 +15,9 @@
               <th>Markup</th>
             </tr>
             <tr>
-              <td>{{ item.stock_quantity }}</td>
-              <td>£{{ item.buying_cost }}</td>
-              <td>£{{ item.selling_price }}</td>
+              <td>{{ '{:20,.0f}'.format(item.stock_quantity) }}</td>
+              <td>£{{ '{:20,.2f}'.format(item.buying_cost) }}</td>
+              <td>£{{ '{:20,.2f}'.format(item.selling_price) }}</td>
               <td> {{ item.margin }}</td>
             </tr>
           </table>

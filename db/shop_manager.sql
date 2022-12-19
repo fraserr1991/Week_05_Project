@@ -12,8 +12,8 @@ CREATE TABLE inventory_items (
     name VARCHAR(255),
     description VARCHAR(255),
     stock_quantity INT,
-    buying_cost INT,
-    selling_price INT,
+    buying_cost FLOAT,
+    selling_price FLOAT,
     image VARCHAR(255),
     manufacturer_id INT NOT NULL REFERENCES manufacturers(id) ON DELETE CASCADE
 );

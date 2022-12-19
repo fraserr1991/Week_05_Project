@@ -35,7 +35,7 @@ body > header {
 .item-container {
     display: flex;
     flex-wrap: wrap;
-    min-width: 33%;
+    min-width: 30%;
     padding: 20px;
 }
 

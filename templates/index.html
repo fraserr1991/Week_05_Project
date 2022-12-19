@@ -9,10 +9,10 @@
       <th><b>Profit potential of inventory</b></th>
     </tr>
     <tr>
-      <td>{{ total_inventory_items }}</td>
-      <td> £{{ total_spent_on_inventory }}</td>
-      <td>£{{ total_book_cost }}</td>
-      <td><b>£{{ total_book_cost - total_spent_on_inventory }}</b></td>
+      <td>{{ '{:20,.0f}'.format(total_inventory_items) }}</td>
+      <td> £{{ '{:20,.2f}'.format(total_spent_on_inventory) }}</td>
+      <td>£{{ '{:20,.2f}'.format(total_book_cost) }}</td>
+      <td><b>£{{ '{:20,.2f}'.format(total_book_cost - total_spent_on_inventory) }}</b></td>
     </tr>
   </table>
 

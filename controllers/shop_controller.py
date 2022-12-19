@@ -35,10 +35,15 @@ def add_item():
     buying_cost = request.form['buying_cost']
     selling_price = request.form['selling_price']
     image = request.form['image']
+    if image == "" or " ":
+        image =  "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg" 
+    
+    all_manufacturers = manufacturer_repository.select_all()
     manufacturer = manufacturer_repository.select(manufacturer_id)
     item = Inventory(item_name, manufacturer, description, quantity, buying_cost, selling_price, image)
     inventory_repository.save(item)
-    return render_template("inventory/new_item.html")
+    
+    return render_template("inventory/new_item.html", save_successful = "Add complete!", all_manufacturers = all_manufacturers)
 
 @shop_blueprint.route("/manufacturer", methods=['GET'])
 def show_manufacturer():

@@ -4,7 +4,7 @@
 <p><b>Filter by manufacturer:</b>
 {% for manufacturer in manufacturers %}
 <label class="container" value="{{ manufacturer.id }}">{{ manufacturer.name }}
-  <input type="checkbox" checked="checked" value="{{manufacturer.id}}">
+  <input type="checkbox" checked="checked" value="{{manufacturer.id}}" >
   <span class="checkmark"></span>
 </label>
 {% endfor %}
@@ -24,9 +24,9 @@
               <th>Markup</th>
             </tr>
             <tr>
-              <td>{{ item.stock_quantity }}</td>
-              <td>£{{ item.buying_cost }}</td>
-              <td>£{{ item.selling_price }}</td>
+              <td>{{ '{:20,.0f}'.format(item.stock_quantity) }}</td>
+              <td>£{{ '{:20,.2f}'.format(item.buying_cost) }}</td>
+              <td>£{{ '{:20,.2f}'.format(item.selling_price) }}</td>
               <td> {{ item.margin }}</td>
             </tr>
           </table>

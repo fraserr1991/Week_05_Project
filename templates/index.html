@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 <hr>
-<table class="shop_details_table">
+<table id="shop_details_table">
     <tr>
       <th>Total shop stock quantity</th>
       <th>Total spent on buying inventory</th>
       <th>Total shop inventory book price</th>
-      <th>Profit potential of inventory</th>
+      <th><b>Profit potential of inventory</b></th>
     </tr>
     <tr>
       <td>{{ total_inventory_items }}</td>
       <td> £{{ total_spent_on_inventory }}</td>
       <td>£{{ total_book_cost }}</td>
-      <td>£{{ total_book_cost - total_spent_on_inventory }}</td>
+      <td><b>£{{ total_book_cost - total_spent_on_inventory }}</b></td>
     </tr>
   </table>
 

@@ -7,6 +7,14 @@ import repositories.manufacturer_repository as manufacturer_repository
 
 shop_blueprint = Blueprint("coffee equipment shop", __name__)
 
+@shop_blueprint.route("/index.html")
+def show_homepage_dashboard():
+    show_inventory = inventory_repository.select_all()
+    total_inventory_items = inventory_repository.calculate_total_inventory_items(show_inventory)
+    total_book_cost = inventory_repository.calculate_book_cost(show_inventory)
+    total_spent_on_inventory = inventory_repository.caclaulate_total_spent(show_inventory)
+    return render_template("/index.html", show_inventory = show_inventory, total_inventory_items = total_inventory_items, total_spent_on_inventory = total_spent_on_inventory, total_book_cost = total_book_cost)
+
 @shop_blueprint.route("/inventory")
 def show_inventory():
     show_inventory = inventory_repository.select_all()

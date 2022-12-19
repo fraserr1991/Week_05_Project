@@ -54,6 +54,28 @@ def calculate_markup(buying_cost, selling_price):
     markup = ("{0:.0%}".format((selling_price-buying_cost)/buying_cost))
     return(markup)
 
+def calculate_total_inventory_items(inventory):
+    total_items = 0
+    for item in inventory:
+        total_items += item.stock_quantity
+    return total_items
+
+def calculate_book_cost(inventory):
+    total_book_cost_of_all_inventory = 0
+    value_of_item = 0
+    for item in inventory:
+        value_of_item += item.selling_price * item.stock_quantity
+        total_book_cost_of_all_inventory += value_of_item
+    return total_book_cost_of_all_inventory
+
+def caclaulate_total_spent(inventory):
+    total_spent_on_all_inventory = 0
+    spent_on_item = 0
+    for item in inventory:
+        spent_on_item += item.buying_cost * item.stock_quantity
+        total_spent_on_all_inventory += spent_on_item
+    return total_spent_on_all_inventory
+
 # def show_by_manufacturer(manufacturer_id)
 #     item = None
 #     sql = "SELECT * FROM inventory_items WHERE manufacturer_id = %s"

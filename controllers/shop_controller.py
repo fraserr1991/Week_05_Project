@@ -118,7 +118,7 @@ def update_manufacturer(id):
     manufacturer_repository.update(manufacturer)
     return redirect('/manufacturer')
 
-@shop_blueprint.route("/inventory/filter/test", methods=['POST'])
+@shop_blueprint.route("/inventory/filter", methods=['POST'])
 def filter_by_manufacturer():
     manufacturer_id = request.form['manufacturer_id']
     inventory_results_by_manufacturer = inventory_repository.filter_inventory_results_by_manufacturer(manufacturer_id)

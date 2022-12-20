@@ -19,6 +19,7 @@
   </table>
 
   <h1> Urgent attention: </h1>
+  <div class="item-container-homepage">
 {% for item in show_inventory %}
       {% if item.stock_quantity is eq(0) %}
         <a href=inventory/{{item.id}} class="homepage_attention_item"><p><b>{{ item.name }} is out of stock</b></p></a>
@@ -26,5 +27,8 @@
       <a href=inventory/{{item.id}} class="homepage_attention_item"><p><i>{{ item.name }} stock is low</i></p></a>
       {% endif %}
 {% endfor %}
+</div>
 
 {% endblock %}
+
+<!-- Place this into the href homepage_attention_item and uncomment CSS if you want the dropdown tooltip: <span class="tooltiptext">Click link to take you to the item</span> -->

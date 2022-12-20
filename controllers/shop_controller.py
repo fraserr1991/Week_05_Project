@@ -92,9 +92,8 @@ def update_inventory(id):
     buying_cost = request.form['buying_cost']
     selling_price = request.form['selling_price']
     image = request.form['image']
-    if image == "" or " ":
+    if image.strip == "":
         image =  "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg"
- 
     manufacturer = manufacturer_repository.select(manufacturer_id)
     margin = inventory_repository.calculate_markup(float(buying_cost), float(selling_price))
     item = Inventory(item_name, manufacturer, description, quantity, buying_cost, selling_price, image, margin, id)

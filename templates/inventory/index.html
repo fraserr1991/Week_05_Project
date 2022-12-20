@@ -2,12 +2,16 @@
 {% block content %}
 <hr>
 <p><b>Filter by manufacturer:</b>
-{% for manufacturer in manufacturers %}
-<label class="container" value="{{ manufacturer.id }}">{{ manufacturer.name }}
-  <input type="checkbox" checked="checked" value="{{manufacturer.id}}" >
-  <span class="checkmark"></span>
-</label>
-{% endfor %}
+<form class="form-inline-2" action="/inventory/filter/test" method="POST">
+    <select id="manufacturer" name="manufacturer_id">
+        {% for manufacturer in manufacturers %}
+          <option value="{{ manufacturer.id }}">{{ manufacturer.name }}</option>
+        {% endfor %}
+    </select>
+    <div class="submit-container-inventory">
+    <br><input type="submit" id="submit" name="submit" value="submit">
+  </div>
+</form>
 </p>
 
 <div class="item-container">

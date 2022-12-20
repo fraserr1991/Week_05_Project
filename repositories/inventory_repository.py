@@ -40,6 +40,20 @@ def select(id):
         item = Inventory(result['name'], manufacturer.name, result['description'], result['stock_quantity'], float(result['buying_cost']), float(result['selling_price']), result['image'], markup, result['id'] )
     return item
 
+def filter_inventory_results_by_manufacturer(id):
+    inventory_items = []
+    sql = "SELECT * FROM inventory_items WHERE manufacturer_id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        manufacturer = manufacturer_repository.select(row['manufacturer_id'])
+        markup = inventory_repository.calculate_markup(row['buying_cost'], row['selling_price'])
+        inventory_item = Inventory(row['name'], manufacturer, row['description'], row['stock_quantity'], float(row['buying_cost']), float(row['selling_price']), row['image'], markup, row['id'])
+        inventory_items.append(inventory_item)
+    return inventory_items
+
+    
 def update(inventory_item):
     sql = "UPDATE inventory_items SET (name, manufacturer_id, description, stock_quantity, buying_cost, selling_price, image) = (%s,%s,%s,%s,%s,%s, %s) WHERE id = %s"
     values = [inventory_item.name, inventory_item.manufacturer.id, inventory_item.description, inventory_item.stock_quantity, inventory_item.buying_cost, inventory_item.selling_price, inventory_item.image, inventory_item.id]

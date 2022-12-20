@@ -60,7 +60,8 @@ def new_manufacturer():
 def add_manufacturer():
     name = request.form['name']
     established = request.form['established']
-    manufacturer = Manufacturer(name, established)
+    active = request.form['active']
+    manufacturer = Manufacturer(name, established, active)
     manufacturer_repository.save(manufacturer)
     return render_template("manufacturer/new_manufacturer.html")
 
@@ -114,7 +115,8 @@ def get_edit_manufacturer(index):
 def update_manufacturer(id):
     name = request.form['name']
     established = request.form['established']
-    manufacturer = Manufacturer(name, established, id)
+    active = request.form['active']
+    manufacturer = Manufacturer(name, established, active, id)
     manufacturer_repository.update(manufacturer)
     return redirect('/manufacturer')
 

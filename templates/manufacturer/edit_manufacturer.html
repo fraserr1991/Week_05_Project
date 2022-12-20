@@ -2,12 +2,18 @@
 {% block content %}
 <hr>
 <h2> Edit item: </h2><br>
-  <form class="form-inline-2" action="/manufacturer/{{ manufacturer.id }}" method="GET">
+  <form class="form-inline-2" action="/manufacturer/{{ manufacturer.id }}" method="post">
       <label for="name">Manufacturer name:</label>
       <input type="text" id="namre" name="name" value="{{ manufacturer.name }}">
       <br><label for=established>Established:</label>
       <input type="text" id="established" name="established" value="{{ manufacturer.established }}">
-        <br><input type="submit" id="submit" name="submit" value="submit">
+      <br><label for="active">Active? </label>
+      <select id="active" name="active">
+        <option value="true" {% if manufacturer.active == True %} selected="selected" {% endif %}> True </option>
+        <option value="false" {% if manufacturer.active == False %} selected="selected" {% endif %}> False</option>
+      </select>
+        <div class="submit-container-manufacturer">
+            <br><input type="submit" id="submit" name="submit" value="submit">
       </div>
   </form>
 

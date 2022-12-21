@@ -76,18 +76,14 @@ def calculate_total_inventory_items(inventory):
 
 def calculate_book_cost(inventory):
     total_book_cost_of_all_inventory = 0
-    value_of_item = 0
     for item in inventory:
-        value_of_item += item.selling_price * item.stock_quantity
-        total_book_cost_of_all_inventory += value_of_item
+        total_book_cost_of_all_inventory += item.selling_price * item.stock_quantity
     return total_book_cost_of_all_inventory
 
 def caclaulate_total_spent(inventory):
     total_spent_on_all_inventory = 0
-    spent_on_item = 0
     for item in inventory:
-        spent_on_item += item.buying_cost * item.stock_quantity
-        total_spent_on_all_inventory += spent_on_item
+        total_spent_on_all_inventory += item.buying_cost * item.stock_quantity
     return total_spent_on_all_inventory
 
 def calculate_inventory_markup(total_book_cost_of_all_inventory, total_spent_on_all_inventory):

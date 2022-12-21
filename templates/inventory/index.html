@@ -5,9 +5,7 @@
 <form class="form-inline-1" action="/inventory/filter" method="POST">
     <select id="manufacturer" name="manufacturer_id">
         {% for manufacturer in manufacturers %}
-        {% if manufacturer.active == True %}
           <option value="{{ manufacturer.id }}">{{ manufacturer.name }}</option>
-        {% endif %}
         {% endfor %}
     </select>
     <!-- <div class="submit-container-inventory"> -->

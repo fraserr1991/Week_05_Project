@@ -65,7 +65,9 @@ def delete(id):
     run_sql(sql, values)
 
 def calculate_markup(buying_cost, selling_price):
-    markup = ("{0:.0%}".format((selling_price-buying_cost)/buying_cost))
+    markup = 0.00
+    if buying_cost and selling_price != 0:
+        markup = ("{0:.0%}".format((selling_price-buying_cost)/buying_cost))
     return markup
 
 def calculate_total_inventory_items(inventory):
@@ -87,7 +89,8 @@ def caclaulate_total_spent(inventory):
     return total_spent_on_all_inventory
 
 def calculate_inventory_markup(total_book_cost_of_all_inventory, total_spent_on_all_inventory):
-    shop_markup = ("{0:.0%}".format((total_book_cost_of_all_inventory-total_spent_on_all_inventory)/total_spent_on_all_inventory))
+    if total_book_cost_of_all_inventory and total_spent_on_all_inventory != 0:
+        shop_markup = ("{0:.0%}".format((total_book_cost_of_all_inventory-total_spent_on_all_inventory)/total_spent_on_all_inventory))
     return shop_markup
 
 # def show_by_manufacturer(manufacturer_id)

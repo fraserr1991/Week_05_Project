@@ -8,7 +8,9 @@
       <br><label for="manufacturer">Manufacturer:</label>
       <select id="manufacturer" name="manufacturer_id">
         {% for manufacturer in all_manufacturers %}
+        {% if manufacturer.active == True %}
           <option value="{{ manufacturer.id }}">{{ manufacturer.name }}</option>
+        {% endif %}
         {% endfor %}
       </select>
       <br><label for=description>Description:</label>

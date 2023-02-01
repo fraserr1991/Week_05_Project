@@ -30,8 +30,7 @@ If you have Postico, you can validate that the database has been setup:
 
 connect to localhost, and navigate to localhost
 
-![[Screenshot 2023-02-01 at 20.22.21.png]]
-
+![Localhost location](/images/readme_setup_images/Screenshot%202023-02-01%20at%2020.22.21.png?raw=true "Optional Title")
 Local host should be populated with two tables
 ![[Screenshot 2023-02-01 at 20.27.44.png]]
 

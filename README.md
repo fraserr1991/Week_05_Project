@@ -1,5 +1,7 @@
 
 
+
+
 ## Setup
 
 ### Languages and Frameworks used:
@@ -31,12 +33,12 @@ If you have Postico, you can validate that the database has been setup:
 connect to localhost, and navigate to localhost
 
 ![Localhost location](/images/readme_setup_images/Screenshot%202023-02-01%20at%2020.22.21.png?raw=true "Optional Title")
+
 Local host should be populated with two tables
-![[Screenshot 2023-02-01 at 20.27.44.png]]
+![Localhost location](/images/readme_setup_images/Screenshot%202023-02-01%20at%2020.27.44.png?raw=true "Optional Title")
 
 Inside those tables should be populated with entries into rows
-
-![[Screenshot 2023-02-01 at 20.28.56.png]]
+![Localhost location](/images/readme_setup_images/Screenshot%202023-02-01%20at%2020.28.56.png?raw=true "Optional Title")
 
 ### Install flask
 
@@ -70,5 +72,4 @@ You should see the following:
 
 ### Open project in browser
 
-The project should now open. To access the homepage go to:  localhost:4999/index.html
-![[Screenshot 2023-02-01 at 22.11.04.png]]
+The project should now open. To access the homepage go to:  ![Localhost location](/images/readme_setup_images/Screenshot%202023-02-01%20at%2022.11.04.png?raw=true "Optional Title")
